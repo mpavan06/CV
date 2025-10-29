@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan Maruthi - SAP Consultant & Aspiring Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-blue: #1e3a8a;
+            --steel-gray: #475569;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+            --accent-blue: #3b82f6;
+            --dark-bg: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            padding-top: 8rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 5px solid var(--white);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-section .title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 1s ease;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            animation: fadeInUp 1.2s ease;
+            max-width: 700px;
+        }
+
+        .contact-info p {
+            margin: 0;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.7;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .btn {
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--navy-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--navy-blue);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--steel-gray);
+            text-align: center;
+        }
+
+        .experience-section {
+            background-color: var(--light-gray);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card h3 {
+            color: var(--navy-blue);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .company {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .location-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style-position: inside;
+            color: var(--steel-gray);
+        }
+
+        .experience-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-section {
+            background-color: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-blue);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 50%;
+            padding-right: 0;
+        }
+
+        .timeline-content {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background-color: var(--white);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            border: 4px solid var(--white);
+            z-index: 1;
+        }
+
+        .timeline-content h3 {
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .institution {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content .year {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .skills-section {
+            background-color: var(--light-gray);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--navy-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background-color: var(--light-gray);
+            color: var(--navy-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .certifications-section {
+            background-color: var(--white);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .year {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .projects-section {
+            background-color: var(--light-gray);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: var(--steel-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            color: var(--navy-blue);
+            gap: 1rem;
+        }
+
+        .contact-section {
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--navy-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--steel-gray);
+            font-size: 1.1rem;
+        }
+
+        .contact-details a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section .title {
+                font-size: 1.2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .timeline-item::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .contact-info {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <img src="public/Parvan.png" alt="Pavan Maruthi" class="profile-image">
+        <h1>Pavan Maruthi</h1>
+        <p class="title">SAP Consultant & Aspiring Data Analyst</p>
+
+        <div class="contact-info">
+            <p>📍 Maisons-Laffitte, France</p>
+            <p>📞 <a href="tel:+33759511838">+33 7 59 51 18 38</a></p>
+            <p>📧 <a href="mailto:m.paonee@gmail.com">m.paonee@gmail.com</a></p>
+            <p><a href="https://www.linkedin.com/in/mpavan06" target="_blank">LinkedIn</a> | <a href="https://github.com/mpaonee" target="_blank">GitHub</a></p>
+        </div>
+
+        <div class="btn-group">
+            <a href="#" class="btn btn-primary">Download CV</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>Passionate and proactive IT professional skilled in bridging business and technical needs. Experienced in client support, process improvement, and data-driven decision-making using SQL, Power BI, and SAP. Currently deepening expertise in Data Analysis and Cloud technologies to support innovation and service quality.</p>
+        </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3>Senior Customer Service Associate</h3>
+                <p class="company">Sutherland (Amazon Voice NA)</p>
+                <p class="location-date">📍 Hyderabad, India | 🗓 Feb 2023 – Dec 2024</p>
+                <ul>
+                    <li>Achieved 95%+ efficiency in request analysis and issue resolution</li>
+                    <li>Optimized refund and return processes using CRM tools</li>
+                    <li>Ensured SLA compliance and enhanced operational collaboration</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Logistics & Supply Chain Coordinator</h3>
+                <p class="company">Waysia (ex Alorsfaim)</p>
+                <p class="location-date">📍 Paris, France | 🗓 2022 – 2023</p>
+                <ul>
+                    <li>Managed procurement and supplier relationships</li>
+                    <li>Used data analytics for inventory optimization</li>
+                    <li>Improved reporting and compliance with quality standards</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Supply Chain & Supplier Analysis Intern</h3>
+                <p class="company">Himalaya Wellness Company</p>
+                <p class="location-date">📍 Bangalore, India | 🗓 2019</p>
+                <ul>
+                    <li>Analyzed 50+ supplier KPIs using data-driven methods</li>
+                    <li>Developed efficiency improvement recommendations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education-section">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>POEC Data Analyste</h3>
+                    <p class="institution">Docaposte Institute</p>
+                    <p class="year">2025 | Paris, France</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Master's in International Business Management</h3>
+                    <p class="institution">Université Catholique de l'Ouest</p>
+                    <p class="year">2018–2019 | Angers, France</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Bachelor of Commerce</h3>
+                    <p class="institution">Arunachal University of Studies</p>
+                    <p class="year">2013–2016 | Bangalore, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">SAP S/4HANA (MM & WM)</span>
+                    <span class="skill-tag">Office 365</span>
+                    <span class="skill-tag">Azure Cloud</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Oracle ERP/CRM</span>
+                    <span class="skill-tag">Coupa</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Professional Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Process Improvement</span>
+                    <span class="skill-tag">Incident Resolution</span>
+                    <span class="skill-tag">SLA Management</span>
+                    <span class="skill-tag">Data Reporting</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">Cross-functional Collaboration</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">English (C1)</span>
+                    <span class="skill-tag">French (B2)</span>
+                    <span class="skill-tag">Kannada (Native)</span>
+                    <span class="skill-tag">Hindi (Native)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications-section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Microsoft Azure Fundamentals</h3>
+                <p class="year">2025</p>
+            </div>
+            <div class="cert-card">
+                <h3>SAP S/4HANA Essentials</h3>
+                <p class="year">2025</p>
+            </div>
+            <div class="cert-card">
+                <h3>Power BI Fundamentals</h3>
+                <p class="year">2024</p>
+            </div>
+            <div class="cert-card">
+                <h3>Agile Foundations</h3>
+                <p class="year">2025</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Customer Analytics Dashboard (Power BI)</h3>
+                    <p>Data visualization dashboard analyzing service KPIs and performance trends.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Inventory Optimization Tool (Python + SQL)</h3>
+                    <p>Predictive model improving stock rotation efficiency.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>SAP Workflow Enhancement</h3>
+                    <p>Process automation for material management using SAP S/4HANA.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+            <div class="contact-details">
+                <p>📧 <a href="mailto:m.paonee@gmail.com">m.paonee@gmail.com</a></p>
+                <p>📞 <a href="tel:+33759511838">+33 7 59 51 18 38</a></p>
+                <p>🌍 Maisons-Laffitte, France</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#" class="btn btn-primary">📄 Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Pavan Maruthi. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
